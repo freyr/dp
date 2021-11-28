@@ -1,0 +1,9 @@
+services:
+  dp:
+    build:
+      context: .
+    container_name: dp
+    volumes:
+      - ./src/:/app/src:consistent
+      - ./tests/:/app/tests:consistent
+      - ./.phpunit.result.cache:/app/.phpunit.result.cache:consistent

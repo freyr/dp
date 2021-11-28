@@ -1,0 +1,13 @@
+.git
+.gitignore
+.gitlab-ci.yml
+.env
+.cache
+vendor/
+.idea
+database/
+.phpunit.result.cache
+Dockerfile
+.dockerignore
+.kubernetes
+.php_cs.cache

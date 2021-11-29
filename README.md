@@ -13,6 +13,7 @@ docker-compose up --build
 
 ## Locally
 ```shell
+pecl install redis
 composer install
 vendor/bin/phpunit
 ```

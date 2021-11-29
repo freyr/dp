@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
-namespace Freyr\DP\Redis;
+namespace Freyr\DP\Cache;
 
 use Exception;
 use Redis;
 
-class CacheService
+class Cache
 {
     public function __construct(private Redis $redis)
     {
-
     }
 
     public function set(string $key, string|array $data): void
@@ -31,5 +29,4 @@ class CacheService
 
         return json_decode($serializedData);
     }
-
 }

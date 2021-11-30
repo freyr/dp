@@ -12,4 +12,9 @@ class RouteController
     {
         return new Response(202, null, (new StreamFactory())->createStream('Hello World'));
     }
+
+    public function advancedShow(): ResponseInterface
+    {
+        return new Response(202, null, (new StreamFactory())->createStream('Hello World Advanced!'));
+    }
 }

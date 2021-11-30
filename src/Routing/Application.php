@@ -2,14 +2,15 @@
 
 namespace Freyr\DP\Routing;
 
-use Freyr\DP\Routing\Routers\SimpleRouter;
+use Freyr\DP\Routing\Routers\Strategies\RouterInterface;
+use Freyr\DP\Routing\Routers\Strategies\SimpleRouter;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class Application
 {
 
-    public function __construct(private SimpleRouter $router)
+    public function __construct(private RouterInterface $router)
     {
     }
 

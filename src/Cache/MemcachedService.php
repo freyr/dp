@@ -1,22 +1,27 @@
 <?php
 
 declare(strict_types=1);
-namespace Freyr\DP\Redis;
+namespace Freyr\DP\Cache;
 
 use Exception;
-use Redis;
 
-class CacheService
+class MemcachedService implements Cache
 {
-    public function __construct(private Redis $redis)
+    public function __construct(private $memcached)
     {
 
     }
 
+    public function has(string $key): bool
+    {
+        // TODO: Implement hat() method.
+    }
+
+
     public function set(string $key, string|array $data): void
     {
         $serializedData = json_encode($data);
-        $this->redis->set($key, $serializedData);
+        //
     }
 
     /**
@@ -24,7 +29,7 @@ class CacheService
      */
     public function get(string $key): string|array
     {
-        $serializedData = $this->redis->get($key);
+        $serializedData = '';
         if ($serializedData === false) {
             throw new Exception('no data with key:' . $key);
         }

@@ -24,6 +24,7 @@ $app->addRoutingMiddleware();
 
 $request = ServerRequestCreatorFactory::create()->createServerRequestFromGlobals()
     ->withUri(new Uri('https','example.com',80,'/image/show/3'));
+//    ->withUri(new Uri('https','example.com',80,'/image/catalog/test_name_catalog'));
 $response = $app->handle($request);
 $responseEmitter = new ResponseEmitter();
 

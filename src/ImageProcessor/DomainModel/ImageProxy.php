@@ -2,7 +2,7 @@
 
 namespace Freyr\DP\ImageProcessor\DomainModel;
 
-class ImageProxy implements ImageInterface
+class ImageProxy implements ImageInterface, ImagePathInterface
 {
     private bool $initialized = false;
     private ?Image $originalImage = null;
@@ -38,4 +38,21 @@ class ImageProxy implements ImageInterface
     }
 
 
+    public function getPath(): string
+    {
+        $this->init();
+        return $this->originalImage->getPath();
+    }
+
+    public function getFileName(): string
+    {
+        $this->init();
+        return $this->originalImage->getFileName();
+    }
+
+    public function getExtension(): string
+    {
+        $this->init();
+        return $this->originalImage->getExtension();
+    }
 }

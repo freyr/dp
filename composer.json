@@ -2,6 +2,7 @@
   "name": "freyr/dp",
   "type": "project",
   "license": "mit",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "Freyr\\DP\\": "src/"
@@ -16,6 +17,9 @@
   "minimum-stability": "dev",
   "require": {
     "slim/slim": "4.*",
+    "slim/psr7": "^1.3.0",
+    "symfony/finder": "^5.0",
+    "symfony/console": "^v5.0",
     "php-di/php-di": "^6.0",
     "php-di/slim-bridge": "^3.0",
     "psr/container": "1.0.*",

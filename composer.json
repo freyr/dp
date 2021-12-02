@@ -26,6 +26,9 @@
     "vlucas/phpdotenv": "^5.0",
     "ocramius/proxy-manager": "2.13.0",
     "guzzlehttp/guzzle": "^6.0",
+    "twig/twig": "^2.0",
+    "slim/twig-view": "^2.1",
+    "nesbot/carbon": "^2.0",
     "ext-redis": "*"
   },
   "require-dev": {

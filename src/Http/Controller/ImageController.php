@@ -2,7 +2,9 @@
 
 namespace Freyr\DP\Http\Controller;
 
-use Freyr\DP\ImageProcessor\Application\Command\AddImageToCatalog;
+use Freyr\DP\Bus\CommandBus;
+use Freyr\DP\Bus\RegisterUserCommand;
+use Freyr\DP\ImageProcessor\Application\Command\AddImageToCatalogCommandHandler;
 use Freyr\DP\ImageProcessor\Application\Command\MoveFile;
 use Freyr\DP\ImageProcessor\Application\Query\AdapterDisplayImageById;
 use Freyr\DP\ImageProcessor\Application\Query\DisplayImageById;
@@ -15,13 +17,33 @@ class ImageController
 
     public function __construct(
         private DisplayImageById $displayImageById,
-        private AddImageToCatalog $addImageToCatalog,
+        private AddImageToCatalogCommandHandler $addImageToCatalog,
         private AdapterDisplayImageById $adapterDisplayImageById,
         private MoveFile $moveFile,
         private VideoParser $videoParser,
+        private CommandBus $bus
     )
     {
     }
+
+
+    public function registerUser(Request $request, Response $response, string $id): Response
+    {
+        $params = $request->getBody()->getContents();
+        $email = $params['email'];
+        $name = $params['name'];
+        $passwd = $params['passwd'];
+
+        $command = new RegisterUserCommand($email, $name, $passwd);
+        $this->bus->dispatch($command);
+    }
+
+
+
+
+
+
+
 
     public function showImage(Request $request, Response $response, string $id): Response
     {

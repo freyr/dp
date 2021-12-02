@@ -15,6 +15,8 @@ use Freyr\DP\LegacyParser\Parser;
 use Freyr\DP\Parser\LegacyParserFacade;
 use Freyr\DP\Parser\SuperVideoParserFacade;
 use Freyr\DP\Parser\VideoParser;
+use Freyr\DP\Refactor\SpeculativeGenerality\UserRepository;
+use Freyr\DP\Refactor\SpeculativeGenerality\UserRedisRepository;
 use Freyr\DP\SimpleLogger;
 use Freyr\DP\SuperVideoParser;
 use GuzzleHttp\Client;
@@ -44,5 +46,6 @@ return [
     CommandBus::class => function (ContainerInterface $container) {
         $bus = new CommandBus();
         $bus->observe($container->get(RegisterUserCommandHandler::class));
-    }
+    },
+    UserRepository::class => autowire(),
 ];

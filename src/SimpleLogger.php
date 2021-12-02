@@ -2,10 +2,16 @@
 
 namespace Freyr\DP;
 
+use Slim\Logger;
+
 class SimpleLogger
 {
-    public function log($data): void
+    public function __construct(private Logger $logger)
     {
-        echo json_encode($data);
+    }
+
+    public function log()
+    {
+        $this->logger->debug();
     }
 }
